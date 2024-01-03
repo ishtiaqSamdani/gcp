@@ -58,12 +58,8 @@
    - *VM instances are assigned at least one internal IP address.*
    - *External (public) IP addresses can be enabled for VM instances.*
 
-**Demo: VM Instances - Internal and External IPs:**
-   - *Showcasing the allocation and usage of internal and external IP addresses for VM instances.*
-
 **Constant External IP Address for VM Instance:**
    - *Assigning a static IP address to the VM is a quick and dirty way.*
-   - *Demo: Using static IP address with a VM instance.*
 
 **Static IP Addresses:**
    - *Can be switched to another VM instance within the same project.*
@@ -74,6 +70,31 @@
 ![Screenshot from 2024-01-03 10-42-01](https://github.com/ishtiaqSamdani/gcp/assets/82057297/6bad4cb7-c7a8-4fed-a467-5a94e9411ecf)
 ![Screenshot from 2024-01-03 10-41-52](https://github.com/ishtiaqSamdani/gcp/assets/82057297/4d71f37d-0791-4c51-a48c-ea3c29a78b31)
 ![Screenshot from 2024-01-03 10-39-43](https://github.com/ishtiaqSamdani/gcp/assets/82057297/cbb32002-3c41-43dc-8100-50d740585bc0)
+
+
+**Bootstrapping with Startup Script:**
+
+1. **Bootstrapping:**
+   - *Install OS patches or software when a VM instance is launched.*
+   - *In VM, configure a startup script to bootstrap.*
+
+**Instance Templates:**
+   - *Avoid specifying VM instance details (image, type) every launch.*
+   - *Define machine type, image, labels, startup script, and other properties.*
+   - *Used for creating VM instances and managed instance groups.*
+   - *Convenient for creating similar instances.*
+   - *Cannot be updated directly; copy and modify for changes.*
+   - *Optional: Specify an image family for versioning.*
+
+**Custom Images:**
+   - *Installing OS patches and software at launch increases boot time.*
+   - *Create a custom image with pre-installed patches and software.*
+   - *Can be created from an instance, disk, snapshot, another image, or a file in Cloud Storage.*
+   - *Shared across projects.*
+
+**Recommendations for Custom Images:**
+   - *Deprecate old images and specify replacement.*
+   - *Harden images to corporate security standards.*
 
 
 
