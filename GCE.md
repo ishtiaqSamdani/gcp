@@ -3,14 +3,17 @@
 1. **General Purpose (E2, N2, N2D, N1):**
    - *Best price-performance ratio*
    - *Workloads:* Web and application servers, small-medium databases, dev environments.
+![Screenshot from 2024-01-03 10-53-45](https://github.com/ishtiaqSamdani/gcp/assets/82057297/818f5356-d8de-4760-9b24-3120ffda392e)
 
 2. **Memory Optimized (M2, M1):**
    - *Ultra high memory workloads*
-   - *Workloads:* Large in-memory databases, in-memory analytics.
+   - *Workloads:* Large in-memory databases, in-memory analytics.  
+![Screenshot from 2024-01-03 10-54-02](https://github.com/ishtiaqSamdani/gcp/assets/82057297/53d269ef-c0ea-4026-9894-a198eb3613b0)
 
 3. **Compute Optimized (C2):**
    - *Compute-intensive workloads*
    - *Workloads:* Gaming applications.
+![Screenshot from 2024-01-03 10-53-54](https://github.com/ishtiaqSamdani/gcp/assets/82057297/fa19615a-4d2c-4215-8067-f467a459034d)
 
 **Compute Engine Machine Types:**
    - *Variety of machine types for each family*
@@ -19,6 +22,13 @@
      - *standard - Type of workload*
      - *2 - Number of CPUs*
      - *Memory, disk, and networking capabilities increase with vCPUs*
+![Screenshot from 2024-01-04 10-39-34](https://github.com/ishtiaqSamdani/gcp/assets/82057297/3f9ed307-43d8-4b3c-afc2-8ac0072e8339)
+
+![Screenshot from 2024-01-04 10-39-58](https://github.com/ishtiaqSamdani/gcp/assets/82057297/24ce722c-1352-4bf4-830b-96a2c63a9209)
+
+
+shared cores: Shared-core machine types provide a virtual CPU that can run for a portion of the time on a single hardware hyper-thread on the host CPU. 
+
 
 **Images:**
 1. **Public Images:**
