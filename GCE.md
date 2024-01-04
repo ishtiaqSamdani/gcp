@@ -52,6 +52,14 @@ shared cores: Shared-core machine types provide a virtual CPU that can run for a
 ![Screenshot from 2024-01-03 10-30-13](https://github.com/ishtiaqSamdani/gcp/assets/82057297/911d0a75-c688-483d-a8ba-94ab69f91023)
 
 
+**Allowing ports with firewall rules**:
+![Screenshot from 2024-01-04 10-55-07](https://github.com/ishtiaqSamdani/gcp/assets/82057297/ceb91185-a8ac-4069-b19d-3eb83c631077)
+
+**Management section**:
+![Screenshot from 2024-01-04 10-57-05](https://github.com/ishtiaqSamdani/gcp/assets/82057297/23201ec2-30ab-42aa-8c47-df11d248ffae)
+
+By setting the deletionProtection flag, a VM instance can be protected from accidental deletion. If a user attempts to delete a VM instance for which you have set the deletionProtection flag, the request fails. Only a user that has been granted a role with compute.instances.create permission can reset the flag to allow the resource to be deleted.
+
 **External (Public) and Internal (Private) IP Addresses:**
 
 1. **External IP Addresses:**
