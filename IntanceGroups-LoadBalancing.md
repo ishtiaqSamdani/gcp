@@ -76,6 +76,15 @@
     ![Screenshot from 2024-01-05 10-04-33](https://github.com/ishtiaqSamdani/gcp/assets/82057297/6c00b5e2-0e98-4660-b833-eb457dd91963)
 
 
+### CHECKING AUTO SCALING
+
+increase cpu usage:
+```
+sudo apt-get install stress
+stress --cpu 2 --timeout 60s
+```
+![Screenshot from 2024-01-05 11-23-30](https://github.com/ishtiaqSamdani/gcp/assets/82057297/d3f2a180-cb54-4a1f-8db7-06030a0a0043)
+
 
 ## UPDATES
 
