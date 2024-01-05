@@ -165,9 +165,4 @@ stress --cpu 2 --timeout 60s
 - Through Google's internal network.
 - HTTP is acceptable; HTTPS is preferred.
 
-### Conclusion:
-- Cloud Load Balancing is a critical component for distributing traffic efficiently.
-- Understanding networking layers and protocols helps in configuring load balancing effectively.
-- SSL/TLS termination/offloading ensures secure communication while optimizing performance.
-
 
