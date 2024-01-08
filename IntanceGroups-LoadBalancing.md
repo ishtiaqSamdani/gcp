@@ -166,3 +166,6 @@ stress --cpu 2 --timeout 60s
 - HTTP is acceptable; HTTPS is preferred.
 
 
+![Screenshot from 2024-01-08 11-01-54](https://github.com/ishtiaqSamdani/gcp/assets/82057297/7724c114-c441-4db9-8894-519951c2d429)
+
+![Screenshot from 2024-01-08 11-22-52](https://github.com/ishtiaqSamdani/gcp/assets/82057297/b0273021-3e9e-47e1-a44f-fd047a67776d)
