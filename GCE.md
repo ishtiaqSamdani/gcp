@@ -1,4 +1,4 @@
-**Compute Engine Machine Families:**
+![Screenshot from 2024-01-08 09-45-57](https://github.com/ishtiaqSamdani/gcp/assets/82057297/4bd83467-41e2-417f-915d-5f192d0f25d7)**Compute Engine Machine Families:**
 
 1. **General Purpose (E2, N2, N2D, N1):**
    - *Best price-performance ratio*
@@ -114,7 +114,9 @@ By setting the deletionProtection flag, a VM instance can be protected from acci
    - *Deprecate old images and specify replacement.*
    - *Harden images to corporate security standards.*
 
+### configure the firewall using network tags
 
-
+![Screenshot from 2024-01-08 09-45-57](https://github.com/ishtiaqSamdani/gcp/assets/82057297/33fae4d8-108f-42ff-9360-09394f1209ee)
+![Screenshot from 2024-01-08 09-46-30](https://github.com/ishtiaqSamdani/gcp/assets/82057297/8a1b91c6-36da-402c-8f37-75db31039785)
 
 
