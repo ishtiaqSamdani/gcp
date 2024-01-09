@@ -169,3 +169,55 @@ stress --cpu 2 --timeout 60s
 ![Screenshot from 2024-01-08 11-01-54](https://github.com/ishtiaqSamdani/gcp/assets/82057297/7724c114-c441-4db9-8894-519951c2d429)
 
 ![Screenshot from 2024-01-08 11-22-52](https://github.com/ishtiaqSamdani/gcp/assets/82057297/b0273021-3e9e-47e1-a44f-fd047a67776d)
+
+**in my configuaration I have provided 60% cpu utilization as signal andhave setup to min 2 max 3 VMs in MIG 
+so my question is when in one of 2 instances cpu execeds 60% then a new VM is created does the requests still go to all 3 instances orr it willl not go to 2nd instance where cpu has eceeded 60%**
+
+1. **Load increases and CPU utilization exceeds 60%:** When one of the two instances in your MIG experiences CPU utilization above 60%, the autoscaler detects this signal and initiates a scale-out event.
+2. **New VM is created:** The autoscaler creates a new VM to handle the increased load, bringing the total number of instances to 3.
+3. **Load balancer continues distributing requests to all 3 instances:** **The load balancer is still responsible for distributing requests among all available instances in the MIG, regardless of their individual CPU utilization levels.** This ensures that the load is shared across all resources, even if one instance is momentarily experiencing higher utilization.
+
+**Key reasons for this behavior:**
+
+- **Load balancing strategy:** The load balancer's primary goal is to distribute requests evenly across the available instances to optimize performance and avoid overloading any single instance.
+- **Short-term CPU spikes:** High CPU utilization doesn't necessarily indicate a long-term bottleneck. It could be due to a temporary spike in activity. The load balancer's strategy helps to mitigate the impact of such spikes.
+- **Redundancy and fault tolerance:** Distributing requests across all instances enhances resilience. If one instance becomes unavailable, the others can continue to handle the load.
+
+**Additional considerations:**
+
+- **Health checks:** The load balancer typically incorporates health checks to monitor the status of instances and avoid sending requests to unhealthy ones.
+- **Custom load balancing algorithms:** You might have the option to configure custom load balancing algorithms based on factors beyond just CPU utilization, such as memory usage or network latency.
+- **Instance draining:** If an instance is scheduled for maintenance or termination, the load balancer can gracefully drain it by stopping the distribution of new requests to that instance.
+
+**In summary:**
+
+- The load balancer will continue to distribute requests to all 3 instances, even if one instance's CPU utilization has exceeded 60%.
+- This behavior is designed to ensure optimal load distribution, resilience, and adaptability to fluctuating workloads.
+- If you have specific concerns about high CPU utilization on a particular instance, you can consider monitoring its performance and potentially adjusting the scaling policy or load balancing configuration.
+
+
+**if I have min 2 and max 3 in my MIG and because load increased there are 3 VMs now but the load decreased and I have configured the scale -in to reduce 1 VM in 10min 
+so my question is in this 10min interval does the load distribute to all 3 VMs or just 2**
+
+Explanation:
+
+ **During the 10-minute scale-in interval, the load will continue to be distributed to all 3 VMs.**
+
+**Explanation:**
+
+1. **Load decrease and scale-in decision:** The autoscaler detects the load decrease and determines that scaling in by 1 VM is appropriate.
+2. **Scale-in delay:** However, the scale-in process does not initiate immediately. Instead, there's a 10-minute delay to ensure load stability and avoid premature scaling actions.
+3. **Load distribution continues:** During this 10-minute interval, the load balancer continues to distribute traffic to all 3 VMs, maintaining full capacity. This ensures that the application can still handle any potential spikes in load within this period.
+4. **Instance termination after delay:** Once the 10-minute delay is over, the autoscaler selects a VM for termination based on its criteria (e.g., older instances, lower priority). The chosen VM is then gracefully terminated, reducing the MIG size to 2.
+
+**Key points:**
+
+- The delay in scaling in is a safety mechanism to prevent premature actions that could impact performance.
+- The load balancer ensures continued load distribution during the delay, maintaining full capacity.
+- The termination of a VM only occurs after the delay, ensuring a smooth transition and avoiding potential disruptions.
+
+**Additional considerations:**
+
+- **Initialization period:** If you have configured an initialization period, the autoscaler will only consider VMs that have been running for longer than that period for termination. This ensures that newly added VMs have time to warm up before being considered for removal.
+- **Stabilization period:** The autoscaler also observes load for a stabilization period (usually 10 minutes) before making scaling decisions. This helps to avoid reacting to short-term fluctuations in load.
+
