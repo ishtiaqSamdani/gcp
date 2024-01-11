@@ -11,8 +11,8 @@
    - `gcloud compute zones list`
    - `gcloud compute regions list`
    - `gcloud compute machine-types list`
-   - `gcloud compute machine-types list --filter="zone:asia-south1-b"`
-   - `gcloud compute machine-types list --filter="zone:(asia-south1-b asia-south1-c)"`
+   - `gcloud compute instances list --filter="zone:asia-south1-b"`
+   - `gcloud compute instances list --filter="zone:(asia-south1-b asia-south1-c)"`
 
 2. **Installation:**
    - Gcloud is part of the Google Cloud SDK.
