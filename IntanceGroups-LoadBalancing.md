@@ -221,3 +221,91 @@ Explanation:
 - **Initialization period:** If you have configured an initialization period, the autoscaler will only consider VMs that have been running for longer than that period for termination. This ensures that newly added VMs have time to warm up before being considered for removal.
 - **Stabilization period:** The autoscaler also observes load for a stabilization period (usually 10 minutes) before making scaling decisions. This helps to avoid reacting to short-term fluctuations in load.
 
+
+## APPLICATION LOAD BALANCER
+
+### TEMPLATE - 1 (instance-template)
+![Screenshot from 2024-01-11 18-48-45](https://github.com/ishtiaqSamdani/gcp/assets/82057297/f2568258-73a4-4f94-be1a-70ce886377c5)
+![Screenshot from 2024-01-11 18-48-58](https://github.com/ishtiaqSamdani/gcp/assets/82057297/ead145a7-ee20-477c-822c-206595b6c4c1)
+![Screenshot from 2024-01-11 18-49-15](https://github.com/ishtiaqSamdani/gcp/assets/82057297/42b16f24-4480-470b-a4de-addabb6d9445)
+![Screenshot from 2024-01-11 18-49-31](https://github.com/ishtiaqSamdani/gcp/assets/82057297/6074c264-e0c8-4bff-9823-dd6e2c21e63d)
+![Screenshot from 2024-01-11 18-49-41](https://github.com/ishtiaqSamdani/gcp/assets/82057297/33550f32-0302-4a04-9d2e-55d9fb56aa35)
+
+```bash
+#!/bin/bash
+apt update 
+apt -y install apache2
+echo "Hello world from $(hostname) $(hostname -I)" > /var/www/html/index.html
+```
+
+### TEMPLATE-2 (instance-template-5-app5)
+
+```bash
+#!/bin/bash
+apt update 
+apt -y install apache2
+mkdir /var/www/html/app2
+echo "Hello world from app2 $(hostname) $(hostname -I)" > /var/www/html/app2/index.html
+```
+
+
+### INSTANCE GROUP-1 (instance-group-1)
+![Screenshot from 2024-01-11 18-55-48](https://github.com/ishtiaqSamdani/gcp/assets/82057297/ca4ca093-750f-468d-a389-d111143fa857)
+
+### INSTANCE GROUP-2 (instance-group-5)
+
+![Screenshot from 2024-01-11 18-56-51](https://github.com/ishtiaqSamdani/gcp/assets/82057297/04b54337-7ebd-4e1f-a496-b6ee5cb224c2)
+
+
+## GLOBAL APPLICATION LOAD BALANCER
+![Screenshot from 2024-01-11 19-09-42](https://github.com/ishtiaqSamdani/gcp/assets/82057297/1e0e0b27-ea07-4509-aa84-94c3f4a7626a)
+
+### FRONTEND:
+![Screenshot from 2024-01-11 18-59-11](https://github.com/ishtiaqSamdani/gcp/assets/82057297/cd128fb6-b444-4800-839e-37576e322038)
+![Screenshot from 2024-01-11 19-01-07](https://github.com/ishtiaqSamdani/gcp/assets/82057297/109cffc7-e439-4e00-b741-2f418dc8762d)
+![Screenshot from 2024-01-11 19-00-39](https://github.com/ishtiaqSamdani/gcp/assets/82057297/bf388eae-f8d4-49c1-ae73-36a75a143dc0)
+
+### BACKEND:
+
+![Screenshot from 2024-01-11 19-03-21](https://github.com/ishtiaqSamdani/gcp/assets/82057297/b7f63575-926e-438d-a669-89caef34da16)
+![Screenshot from 2024-01-11 19-03-46](https://github.com/ishtiaqSamdani/gcp/assets/82057297/33aea5f2-0808-42df-9472-5ac70d9f32ee)
+![Screenshot from 2024-01-11 19-04-10](https://github.com/ishtiaqSamdani/gcp/assets/82057297/52f42dd2-f893-4cbe-b389-832699192684)
+![Screenshot from 2024-01-11 19-04-24](https://github.com/ishtiaqSamdani/gcp/assets/82057297/e47711c3-575d-449b-8ff4-e31f686ec030)
+
+### HOST AND PATHS
+![Screenshot from 2024-01-11 19-06-29](https://github.com/ishtiaqSamdani/gcp/assets/82057297/919176aa-83d2-4b5d-9199-79a43866a2f6)
+
+
+
+![Screenshot from 2024-01-11 19-07-21](https://github.com/ishtiaqSamdani/gcp/assets/82057297/b281011a-ab9f-481b-a879-60c03f57817e)
+![Screenshot from 2024-01-11 19-07-39](https://github.com/ishtiaqSamdani/gcp/assets/82057297/0b31eb35-24b9-468b-9d9c-6a54ff0dfd35)
+![Screenshot from 2024-01-11 19-07-51](https://github.com/ishtiaqSamdani/gcp/assets/82057297/6209c50a-0010-4b96-a74b-a6ba227e69c9)
+
+### CERTIFICATE
+![Screenshot from 2024-01-11 19-09-07](https://github.com/ishtiaqSamdani/gcp/assets/82057297/090db101-189d-44a0-a4ae-ddba5d4d0499)
+
+![Screenshot from 2024-01-11 19-12-45](https://github.com/ishtiaqSamdani/gcp/assets/82057297/22061089-96e8-48dc-85ae-3213c3c2bee1)
+
+
+### REGIONAL APPLICATION LOAD BALANCER
+![Screenshot from 2024-01-11 19-12-13](https://github.com/ishtiaqSamdani/gcp/assets/82057297/3ec10de7-9d12-4cfb-b54f-192c3aca8499)
+
+### `ONLY WORKS WITH INSTANCE GROUPS IN SELECTED REGION`
+![Screenshot from 2024-01-11 19-17-26](https://github.com/ishtiaqSamdani/gcp/assets/82057297/8440c440-c118-4dd4-93f3-6644eaa2cc62)
+
+![Screenshot from 2024-01-11 19-17-48](https://github.com/ishtiaqSamdani/gcp/assets/82057297/36c59de1-7d7e-4e9b-9f55-7e2c4faa1f66)
+![Screenshot from 2024-01-11 19-18-06](https://github.com/ishtiaqSamdani/gcp/assets/82057297/b9171f0c-1b6d-4e99-ba38-f1d63e65811f)
+![Screenshot from 2024-01-11 19-24-27](https://github.com/ishtiaqSamdani/gcp/assets/82057297/014b0d7a-dab4-466c-85d1-3e77a0936bb9)
+
+
+### INTERNAL APPLICATION LOAD BALANCER
+![Screenshot from 2024-01-11 19-27-50](https://github.com/ishtiaqSamdani/gcp/assets/82057297/e809f65b-8a60-4f4e-b7d8-4a4a05184c47)
+![Screenshot from 2024-01-11 19-29-19](https://github.com/ishtiaqSamdani/gcp/assets/82057297/cb758001-7422-42bc-b8f8-87cd7648a57e)
+![Screenshot from 2024-01-11 19-29-45](https://github.com/ishtiaqSamdani/gcp/assets/82057297/d474eb25-9735-4171-ac82-a4c5ba49f0d0)
+
+### `DOES NOT WORK FROM INTERNET`
+![Screenshot from 2024-01-11 19-30-19](https://github.com/ishtiaqSamdani/gcp/assets/82057297/f93693bb-9eca-4417-ba8a-082769260c19)
+
+### `WORKS FROM VM`
+
+![Screenshot from 2024-01-11 19-31-43](https://github.com/ishtiaqSamdani/gcp/assets/82057297/1bbeedd7-741c-4146-ab37-a76c42eba7a4)
