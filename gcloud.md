@@ -21,13 +21,16 @@
 
    ![Screenshot from 2024-01-11 11-31-05](https://github.com/ishtiaqSamdani/gcp/assets/82057297/e0fe5ab7-c5d1-4cd1-a9e9-44ca6f9b1d6f)
 
-3. **Connecting to GCP:**
+   ![Screenshot from 2024-01-11 11-34-47](https://github.com/ishtiaqSamdani/gcp/assets/82057297/46d0889d-ac61-40ab-b5ce-118e5cfd99b6)
+
+
+4. **Connecting to GCP:**
    - `gcloud init`: Initializes or reinitializes gcloud.
    - Authorizes gcloud to use your user account credentials.
    - Sets up configuration, including the current project, default zone, etc.
    - `gcloud config list`: Lists all properties of the active configuration.
 
-4. **Google Cloud Shell:**
+5. **Google Cloud Shell:**
    - Cloud Shell is backed by a VM instance provisioned by Google Cloud.
    - Provides 5 GB of free persistent disk storage as your $HOME directory.
    - Prepackaged with the latest version of Cloud SDK, Docker, etc.
@@ -37,13 +40,13 @@
    - After 120 days of inactivity, even your $HOME directory is deleted.
    - Can be used to SSH into virtual machines using their private IP addresses.
 
-5. **Specific CLI Tools for Some Services:**
+6. **Specific CLI Tools for Some Services:**
    - Cloud Storage: `gsutil`
    - Cloud BigQuery: `bq`
    - Cloud Bigtable: `cbt`
    - Kubernetes: `kubectl` (in addition to `gcloud` for cluster management).
 
-6. **GCP Services Manageable via Gcloud:**
+7. **GCP Services Manageable via Gcloud:**
    - Compute Engine Virtual Machines
    - Managed Instance Groups
    - Databases
