@@ -11,13 +11,15 @@
    - `gcloud compute zones list`
    - `gcloud compute regions list`
    - `gcloud compute machine-types list`
-   - `gcloud compute machine-types list --filter="zone:us-central1-b"`
-   - `gcloud compute machine-types list --filter="zone:(us-central1-b europe-west1-d)"`
+   - `gcloud compute machine-types list --filter="zone:asia-south1-b"`
+   - `gcloud compute machine-types list --filter="zone:(asia-south1-b asia-south1-c)"`
 
 2. **Installation:**
    - Gcloud is part of the Google Cloud SDK.
    - Cloud SDK requires Python.
    - Installation instructions are available on [cloud.google.com/sdk/docs/install](https://cloud.google.com/sdk/docs/install).
+
+   ![Screenshot from 2024-01-11 11-31-05](https://github.com/ishtiaqSamdani/gcp/assets/82057297/e0fe5ab7-c5d1-4cd1-a9e9-44ca6f9b1d6f)
 
 3. **Connecting to GCP:**
    - `gcloud init`: Initializes or reinitializes gcloud.
