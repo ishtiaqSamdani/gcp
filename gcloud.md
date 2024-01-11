@@ -23,6 +23,7 @@
 
    ![Screenshot from 2024-01-11 11-34-47](https://github.com/ishtiaqSamdani/gcp/assets/82057297/46d0889d-ac61-40ab-b5ce-118e5cfd99b6)
 
+![Screenshot from 2024-01-11 11-39-04](https://github.com/ishtiaqSamdani/gcp/assets/82057297/4f94d192-6891-4399-965a-4ab94f7bc6b7)
 
 4. **Connecting to GCP:**
    - `gcloud init`: Initializes or reinitializes gcloud.
