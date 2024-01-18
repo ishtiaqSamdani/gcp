@@ -144,3 +144,30 @@
      default = "default_value"
    }
    ```
+
+
+terraform taints
+
+Terraform's taint command is used to manually mark a resource for recreation. This can be useful when a particular resource is in an error state or needs to be re-provisioned for some reason. When you run terraform apply the next time, Terraform will destroy the tainted resource and create a new one in its place.
+
+Here's an example of how to use the taint command with a Google Compute Engine instance:
+
+In this example, google_compute_instance.my_instance is the resource that you want to taint. Replace my_instance with the name of your instance.
+
+terraform taint google_compute_instance.my_instance
+Use cases for the taint command can include:
+
+If a resource is in an error state and you want to recreate it.
+If you've manually changed a resource and want Terraform to reset it to its described state.
+If you want to force a certain sequence of resource creations and deletions during your next terraform apply.
+Remember, tainting a resource will only mark it for recreation. The actual recreation happens when you run terraform apply. Also, tainting does not persist across Terraform runs, so if you taint a resource and then run terraform plan, the taint will be removed if the plan does not include recreating the resource.
+
+terraform untaint
+
+To untaint a resource in Terraform, you can use the untaint command. This command removes the taint from a resource, which means the resource will not be destroyed and recreated the next time you run terraform apply.
+
+Here's how you can use the untaint command:
+terraform untaint google_compute_instance.my_instance
+In this example, google_compute_instance.my_instance is the resource that you want to untaint. Replace my_instance with the name of your instance.
+
+Remember, you should only untaint a resource if you're sure it's in a good state. If the resource is still in an error state or needs to be re-provisioned for some reason, you should leave it tainted so it gets recreated the next time you run terraform apply.
