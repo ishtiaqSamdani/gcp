@@ -135,3 +135,84 @@
 * **Security:** Autopilot enforces some security restrictions, like not deploying in GKE-managed namespaces, while Standard offers full control over security configurations.
 * **Third-party applications:** Autopilot restricts deploying workloads from Cloud Marketplace, while Standard allows it.
 
+
+
+### Pod:
+- A **Pod** is the basic unit of deployment in Kubernetes.
+- It represents a single instance of a running process in a cluster and encapsulates an application's container(s), storage resources, and a unique network IP.
+- Containers within a Pod share the same network namespace, allowing them to communicate with each other using localhost.
+- Pods are generally considered ephemeral and can be rescheduled or replaced as needed.
+
+### Deployment:
+- A **Deployment** is a higher-level abstraction that manages and scales Pods.
+- It ensures that a specified number of replicas of an application are running, and it helps in maintaining the desired state of the application.
+- Deployments support rolling updates and rollbacks, making it easier to manage changes to applications over time.
+- The configuration for a Deployment includes details such as the container image, number of replicas, and update strategy.
+
+### ReplicaSet:
+- A **ReplicaSet** is a lower-level abstraction that ensures a specified number of replicas (identical copies) of a Pod are running at all times.
+- It is part of the scaling and healing aspects of a Deployment, ensuring that the desired number of Pods are maintained.
+- ReplicaSets are often used by Deployments internally to manage the desired state of the application.
+
+### Types of Services in Kubernetes:
+1. **ClusterIP**:
+   - Exposes the service on a cluster-internal IP.
+   - This type makes the service only reachable from within the cluster.
+
+2. **NodePort**:
+   - Exposes the service on each Node's IP at a static port.
+   - This type allows external traffic to reach the service on the specified port across all Nodes.
+
+3. **LoadBalancer**:
+   - Exposes the service externally using a cloud provider's load balancer.
+   - The cloud provider assigns an external IP to the service, and traffic is distributed to the service endpoints.
+Certainly! Below are examples for each type of service in Kubernetes:
+
+### 1. ClusterIP Service:
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service-clusterip
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+```
+
+### 2. NodePort Service:
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30080(30000-32767)
+```
+
+### 3. LoadBalancer Service:
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service-loadbalancer
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
+```
