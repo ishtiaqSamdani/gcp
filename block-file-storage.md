@@ -1,4 +1,5 @@
 ### Storage Types: Block Storage and File Storage
+![Screenshot from 2024-02-02 11-05-04](https://github.com/ishtiaqSamdani/gcp/assets/82057297/fc284d1f-a71f-48f8-80ba-781044b1c4b3)
 
 1. **Hard Disk Type:**
    - Your hard disk uses **Block Storage.**
@@ -42,6 +43,7 @@
    - Suitable for running custom databases.
 
 ### Persistent Disks vs Local SSDs
+![Screenshot from 2024-02-02 11-05-59](https://github.com/ishtiaqSamdani/gcp/assets/82057297/1863797b-9891-443b-860b-7df8d8b0ad9a)
 
 8. **Persistent Disks:**
    - Attached as a network drive.
@@ -54,6 +56,7 @@
    - Suitable for ephemeral storage.
 
 ### Persistent Disks - Standard vs Balanced vs SSD
+![Screenshot from 2024-02-02 11-06-27](https://github.com/ishtiaqSamdani/gcp/assets/82057297/cd3f1ff7-8158-4168-9d95-e2b6d84bd788)
 
 10. **Standard, Balanced, SSD:**
    - Differ in underlying storage (HDD, SSD).
