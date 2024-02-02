@@ -79,3 +79,70 @@
 13. **Recommendations:**
    - Don't hesitate to delete unnecessary snapshots.
    - Deleting a snapshot only removes data not needed by other snapshots.
+
+
+### Attaching a Data Persistent Disk to a GCE VM
+
+#### A: Attach Disk to running or stopped VM
+
+1. Use gcloud command to attach a disk to a running or stopped VM:
+   ```
+   gcloud compute instances attach-disk INSTANCE_NAME --disk DISK_NAME
+   ```
+
+#### B: Format the Disk
+
+1. List attached disks to identify the new disk:
+   ```
+   sudo lsblk
+   ```
+
+2. Format the disk to the desired file system (e.g., ext4):
+   ```
+   sudo mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/sdb
+   ```
+
+#### C: Mount the Disk
+
+1. Create a directory for mounting the disk:
+   ```
+   sudo mkdir -p /mnt/disks/MY_DIR
+   ```
+
+2. Mount the disk to the created directory:
+   ```
+   sudo mount -o discard,defaults /dev/sdb /mnt/disks/MY_DIR
+   ```
+
+3. Provide necessary permissions to the mounted directory:
+   ```
+   sudo chmod a+w /mnt/disks/MY_DIR
+   ```
+
+### Resizing Data Persistent Disks
+
+#### Step I: Resize the Disk
+
+1. Use gcloud command to resize the disk:
+   ```
+   gcloud compute disks resize DISK_NAME --size DISK_SIZE
+   ```
+
+#### Step II: Take a Snapshot
+
+1. As a precaution, take a snapshot of the disk for backup:
+   ```
+   gcloud compute disks snapshot DISK_NAME --snapshot-name SNAPSHOT_NAME
+   ```
+
+#### Step III: Resize File System and Partitions
+
+1. For ext4 file system, resize the file system:
+   ```
+   sudo resize2fs /dev/sdb
+   ```
+
+2. For xfs file system, resize using:
+   ```
+   sudo xfs_growfs /dev/sdb
+   ```
