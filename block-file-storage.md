@@ -1,0 +1,78 @@
+### Storage Types: Block Storage and File Storage
+
+1. **Hard Disk Type:**
+   - Your hard disk uses **Block Storage.**
+
+2. **File Share in Enterprise:**
+   - When creating a file share for colleagues in an enterprise, you are using **File Storage.**
+
+### GCP - Block Storage and File Storage
+
+#### Block Storage:
+
+3. **Persistent Disks:**
+   - Network Block Storage.
+   - Zonal: Data replicated in one zone.
+   - Regional: Data replicated in multiple zones.
+
+4. **Local SSDs:**
+   - Physically attached to the VM host.
+   - Temporary data with a lifecycle tied to VM instance.
+
+#### Local SSDs:
+   - Advantages and Disadvantages:
+     - **Advantages:**
+       - Very fast I/O.
+       - Ideal for high IOPs and temporary storage (e.g., caches).
+     - **Disadvantages:**
+       - Ephemeral storage with lower durability, availability, and flexibility.
+
+#### Network Block Storage (Persistent Disks):
+
+5. **Provisioned Capacity:**
+   - Very flexible, allowing size adjustments when attached to VM instances.
+   - Performance scales with size.
+   - Independent lifecycle from VM instances.
+
+6. **Options:**
+   - Regional and Zonal PDs (Persistent Disks).
+   - Zonal PDs replicated in a single zone, regional PDs in 2 zones in the same region.
+
+7. **Use Case:**
+   - Suitable for running custom databases.
+
+### Persistent Disks vs Local SSDs
+
+8. **Persistent Disks:**
+   - Attached as a network drive.
+   - Lifecycle separate from VM instance.
+   - Suitable for permanent storage.
+
+9. **Local SSDs:**
+   - Physically attached.
+   - Lifecycle tied to VM instance.
+   - Suitable for ephemeral storage.
+
+### Persistent Disks - Standard vs Balanced vs SSD
+
+10. **Standard, Balanced, SSD:**
+   - Differ in underlying storage (HDD, SSD).
+   - pd-standard, pd-balanced, pd-ssd respectively.
+   - Vary in cost, performance for different use cases.
+
+### Persistent Disks - Snapshots
+
+11. **Snapshot Features:**
+   - Point-in-time snapshots of Persistent Disks.
+   - Scheduled snapshots with configurable options.
+   - Incremental snapshots, shareable across projects.
+
+12. **Best Practices:**
+   - Avoid frequent snapshots for performance reasons.
+   - Schedule snapshots during off-peak hours.
+   - Create images from snapshots for faster disk creation.
+   - Organize disks for better snapshot and image management.
+
+13. **Recommendations:**
+   - Don't hesitate to delete unnecessary snapshots.
+   - Deleting a snapshot only removes data not needed by other snapshots.
