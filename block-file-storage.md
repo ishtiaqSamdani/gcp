@@ -146,3 +146,105 @@
    ```
    sudo xfs_growfs /dev/sdb
    ```
+
+#### A: Attach Disk to running or stopped VM
+
+- **Command:**
+  ```bash
+  gcloud compute instances attach-disk INSTANCE_NAME --disk DISK_NAME
+  ```
+- **Explanation:**
+  - `gcloud compute instances attach-disk`: This command is part of the Google Cloud SDK (`gcloud`) and is used to attach a disk to a Compute Engine instance.
+  - `INSTANCE_NAME`: Replace it with the name of your running or stopped VM instance.
+  - `--disk DISK_NAME`: Specify the name of the disk you want to attach to the VM.
+
+#### B: Format the Disk
+
+1. **List disks attached to your VM**
+   - **Command:**
+     ```bash
+     sudo lsblk
+     ```
+   - **Explanation:**
+     - `sudo lsblk`: Lists block devices attached to the system, showing information such as disks and their partitions.
+
+2. **Format to file format of your choice (example: ext4 file system)**
+   - **Command:**
+     ```bash
+     sudo mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/sdb
+     ```
+   - **Explanation:**
+     - `sudo mkfs.ext4`: Formats the specified block device (`/dev/sdb` in this case) with the ext4 file system.
+     - `-m 0`: Sets reserved blocks percentage to 0.
+     - `-E lazy_itable_init=0,lazy_journal_init=0,discard`: Additional options for optimization.
+     - `/dev/sdb`: The target block device to be formatted.
+
+#### C: Mount the Disk
+
+1. **Create the directory to mount to**
+   - **Command:**
+     ```bash
+     sudo mkdir -p /mnt/disks/MY_DIR
+     ```
+   - **Explanation:**
+     - `sudo mkdir -p`: Creates a directory (`/mnt/disks/MY_DIR`) with parent directories if they do not exist.
+
+2. **Mount the disk**
+   - **Command:**
+     ```bash
+     sudo mount -o discard,defaults /dev/sdb /mnt/disks/MY_DIR
+     ```
+   - **Explanation:**
+     - `sudo mount`: Mounts the specified block device (`/dev/sdb`) to the specified mount point (`/mnt/disks/MY_DIR`).
+     - `-o discard,defaults`: Mount options, where `discard` enables TRIM/discard for SSDs, and `defaults` sets default mount options.
+
+3. **Provide permissions**
+   - **Command:**
+     ```bash
+     sudo chmod a+w /mnt/disks/MY_DIR
+     ```
+   - **Explanation:**
+     - `sudo chmod a+w`: Grants write permissions to all users (`a` for all, `+w` for write).
+     - `/mnt/disks/MY_DIR`: The target directory.
+
+### Resizing Data Persistent Disks
+
+#### Step I: Resize the Disk
+
+- **Command:**
+  ```bash
+  gcloud compute disks resize DISK_NAME --size DISK_SIZE
+  ```
+- **Explanation:**
+  - `gcloud compute disks resize`: Resizes the specified disk.
+  - `DISK_NAME`: The name of the disk to be resized.
+  - `--size DISK_SIZE`: Specifies the new size for the disk.
+
+#### Step II: Take a Snapshot
+
+- **Command:**
+  ```bash
+  gcloud compute disks snapshot DISK_NAME --snapshot-name SNAPSHOT_NAME
+  ```
+- **Explanation:**
+  - `gcloud compute disks snapshot`: Creates a snapshot of the specified disk.
+  - `DISK_NAME`: The name of the disk for which the snapshot is taken.
+  - `--snapshot-name SNAPSHOT_NAME`: Specifies the name for the snapshot.
+
+#### Step III: Resize File System and Partitions
+
+1. **For ext4 file system**
+   - **Command:**
+     ```bash
+     sudo resize2fs /dev/sdb
+     ```
+   - **Explanation:**
+     - `sudo resize2fs`: Resizes the ext4 file system on the specified block device (`/dev/sdb`).
+
+2. **For xfs file system**
+   - **Command:**
+     ```bash
+     sudo xfs_growfs /dev/sdb
+     ```
+   - **Explanation:**
+     - `sudo xfs_growfs`: Resizes the xfs file system on the specified block device (`/dev/sdb`).
