@@ -3,3 +3,4 @@ sudo mkdir /home/jenkins
 sudo mount /dev/sdb /home/jenkins
 echo "/dev/sdb    /home/jenkins    ext4    defaults    0   2" >> /etc/fstab
 sudo mount -a
+sudo mkdir -p /home/jenkins/data
